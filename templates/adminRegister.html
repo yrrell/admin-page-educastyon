@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="container admin-form-container">
+        <div class="logo">
+            <img src="../static/img/logo.png" alt="School Logo">
+            <div class="logo-label">WELCOME TO EDUCASTYON</div>
+        </div>
+        <h2>Admin Registration</h2>
+        <form id="adminRegisterForm" method="post">
+            <label for="adminUser">Username:</label>
+            <input type="text" id="adminUser" name="adminUser" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+            <div id="error-message"></div>
+        </form>
+    </div>
+    <script src="../javascript/adminRegister.js"></script>
+</body>
+</html>

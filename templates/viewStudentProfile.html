@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../static/img/logo.png" alt="School Logo">
+            <div class="logo-label">EDUCASTYON</div>
+        </div>
+        <button id="sidebarToggle">></button>
+        <ul class="nav-links">
+            <li><a href="../templates/index.html">Home</a></li>
+            <li><a href="../templates/admin.html">Student Profiles</a></li>
+            <li><a href="../templates/addStudentProfile.html">Add Student</a></li>
+            <li><a href="../templates/studentUsers.html">Student Accounts</a></li>
+            <li><a href="../php/logout.php">Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Student Profile</h1>
+        <div id="profileDetails">
+            <!-- Profile details will be dynamically inserted here -->
+        </div>
+    </div>
+    <script src="../javascript/sidebar.js"></script>
+    <script src="../javascript/viewProfile.js"></script>
+</body>
+</html>

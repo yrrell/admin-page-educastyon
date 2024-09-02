@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Profile</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../static/img/logo.png" alt="School Logo">
+            <div class="logo-label">EDUCASTYON</div>
+        </div>
+        <button id="sidebarToggle">></button>
+        <ul class="nav-links">
+            <li><a href="../templates/index.html">Home</a></li>
+            <li><a href="../templates/admin.html">Student Profiles</a></li>
+            <li><a href="../templates/addStudentProfile.html">Add Student</a></li>
+            <li><a href="../templates/studentUsers.html">Student Accounts</a></li>
+            <li><a href="../php/logout.php">Logout</a></li>
+        </ul>
+    </div>
+  
+    <h2>Edit Student Account</h2>
+    <?php
+    include '../php/db.php';
+    $id = $_GET['id'];
+    $query = "SELECT * FROM studentUsers WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$id]);
+    $users = $stmt->fetch();
+    ?>
+    <form action="../php/editStudentUser.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+
+        <label for="password">Change Password:</label>
+        <input type="text" name="password" value="<?= $user['password'] ?>" required>
+
+        <input type="submit" value="Update Password">
+    </form>
+        <script src="../javascript/sidebar.js"></script>
+</body>
+</html>

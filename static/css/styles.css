@@ -1,0 +1,448 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background: url('../img/backgroundd.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Cover the entire screen */
+}
+
+/* Full-Screen Background Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray */
+    z-index: -1; /* Ensure it is behind the sidebar and content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Sidebar Styling */
+/* Sidebar */
+.sidebar {
+    width: 25%; /* Sidebar width is 1/4 of the screen */
+    max-width: 300px; /* Optional: maximum width for larger screens */
+    background-color: rgba(128, 0, 0, 0.9); /* Maroon background with opacity */
+    color: #fff; /* White text color for contrast */
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0; /* Initially visible */
+    height: 100%; /* Full height */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0); /* Initially shown */
+    opacity: 1; /* Initially shown */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Flexible layout */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content vertically */
+}
+
+/* Hidden state for the sidebar */
+.sidebar.hide {
+    transform: translateX(-100%); /* Move it off-screen */
+    opacity: 0; /* Fade out */
+}
+
+/* Sidebar Logo */
+.sidebar .logo {
+    text-align: center; /* Center the logo and label */
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 80%; /* Adjust logo size */
+    max-width: 120px; /* Limit maximum size */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.sidebar .logo img:hover {
+    opacity: 0.8; /* Slightly dim the logo on hover */
+}
+
+.sidebar .logo-label {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Centered Navigation Links */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto; /* Push links to the bottom */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #007bff;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Sidebar Toggle Button */
+#sidebarToggle {
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Adjusted position outside the sidebar */
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transform: translateY(-50%); /* Center vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebarToggle:hover {
+    background-color: #0056b3;
+}
+
+#toggleIcon {
+    font-size: 24px; /* Size of the arrow */
+}
+
+/* Additional styles for toggle icons if needed */
+#sidebarToggle.show #toggleIcon::before {
+    content: '<'; /* Icon when sidebar is visible */
+}
+
+#sidebarToggle.hide #toggleIcon::before {
+    content: '>'; /* Icon when sidebar is hidden */
+}
+
+/* Content Area Styling */
+.content {
+    margin-left: 25%; /* Adjust margin to account for sidebar */
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray background */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: margin-left 0.3s ease; /* Smooth transition for content shift */
+}
+
+/* Content area when sidebar is hidden */
+.content.shifted {
+    margin-left: 0; /* Remove margin when sidebar is hidden */
+}
+
+/* Table Styling */
+.table {
+    width: 90%; /* Slightly smaller width to add margins */
+    max-width: 1200px; /* Optional: limit maximum width */
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff; /* Solid white background for the table */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center; /* Center align table headers */
+}
+
+.table th {
+    background-color: skyblue; /* Sky blue background for headers */
+    color: #fff; /* White text color for headers */
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Buttons Styling */
+button, a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #007bff;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a.edit {
+    background-color: #28a745;
+}
+
+a.edit:hover {
+    background-color: #218838;
+}
+
+a.delete {
+    background-color: #dc3545;
+}
+
+a.delete:hover {
+    background-color: #c82333;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #007bff; /* Highlight color */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow */
+}
+
+/* Form Styling */
+.container {
+    width: 80%;
+    height: 80%;
+    max-width: 600px; /* Limit maximum width for larger screens */
+    max-height: 800px; /* Limit maximum height */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Center the container */
+    box-sizing: border-box;
+}
+
+.admin-form-container .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-form-container .logo img {
+    width: 120px; /* Standard width for the logo image */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.admin-form-container .logo-label {
+    font-size: 20px; /* Larger font size for the label */
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333; /* Dark text color for better readability */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    width: 100%; /* Full width inside container */
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Error and Success Messages */
+.form-error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: none; /* Hide by default, show with JS */
+}
+
+.success-message {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        transition: none; /* Disable sidebar toggle animation on small screens */
+    }
+
+    .content {
+        margin-left: 0; /* No margin needed on small screens */
+        padding: 10px;
+    }
+
+    .table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .container {
+        width: 90%;
+        height: auto;
+        max-width: none;
+    }
+}
+
+.confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.dialog-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.dialog-content button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dialog-content button#confirmDelete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.dialog-content button#cancelDelete {
+    background-color: #5bc0de;
+    color: white;
+}
+
+/* Specific styles for studentUsers page */
+.stuNumber a {
+    color: #5bc0de;
+    text-decoration: none;
+}
+
+.stuNumber a:hover {
+    text-decoration: underline;
+}
+
+#profileDetails {
+    width: 80vw;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile picture styles */
+.profile-pic {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+/* Heading styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
